@@ -4,13 +4,13 @@ var origFunc = require('./origFunc');
 var randomStr = require('./randomStr');
 var STRING_FOR_EQUALITY = randomStr();
 
-describe('Check func behaivor', function () {
+describe('Check func behaviour', function () {
   it('Test on equality', function () {
     for (var i = 0; i < 100; i++) {
       var aIndex = STRING_FOR_EQUALITY[getRandomInt(0, 50)];
       var bIndex = STRING_FOR_EQUALITY[getRandomInt(0, 50)];
-      console.log('Test case #%s: aIndex: %s, bIndex: %s', i, aIndex, bIndex);
       var args = [STRING_FOR_EQUALITY, aIndex, bIndex];
+      console.log('Test case #%s: aIndex: %s, bIndex: %s \n refactored return: %s \n original return: %s', i, aIndex, bIndex, func.apply(this, args), origFunc.apply(this, args));
       assert.equal(func.apply(this, args), origFunc.apply(this, args));
     }
     console.log('Equal string was: %s', STRING_FOR_EQUALITY);
